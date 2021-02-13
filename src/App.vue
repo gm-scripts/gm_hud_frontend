@@ -3,10 +3,11 @@
     <HudElement
       v-for="e in elements"
       :key="e.key"
+      :name="e.key"
       :state="state"
       :value="e.value"
       :color="e.color"
-      :backgroundColor="e.backgroundColor"
+      :backgroundColor="backgroundColor"
       :icon="e.icon"
     ></HudElement>
   </div>
@@ -25,20 +26,25 @@ export default {
       elements: {
         food: {
           key: "food",
-          value: 0,
+          value: 0.3,
           color: "#ffa500",
-          backgroundColor: "#4a4a55",
           icon: require("./assets/icons/food.svg")
         },
         water: {
           key: "water",
-          value: 0,
+          value: 0.8,
           color: "#6495ed",
-          backgroundColor: "#4a4a55",
           icon: require("./assets/icons/water.svg")
+        },
+        money: {
+          key: "money",
+          value: 1000,
+          color: "#11bb42",
+          icon: require("./assets/icons/dollar.svg")
         }
       },
-      state: "expanded",
+      state: "minimized",
+          backgroundColor: "#4a4a55",
       show: true
     };
   },
@@ -54,6 +60,7 @@ export default {
         case "val": {
           this.elements.food.value = item.food;
           this.elements.water.value = item.water;
+          this.elements.money.value = item.money;
           break;
         }
         case "conf": {
@@ -79,6 +86,9 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
+}
+* {
+  box-sizing: border-box;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

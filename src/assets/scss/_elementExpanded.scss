@@ -1,10 +1,19 @@
 .hud-element.expanded {
+  background-color: transparent;
   .hud-icon {
+    background-color: var(--color);
+    border: calc(var(--size) * 0.1) solid var(--background-color); 
+    z-index: 2;
     .hud-icon-indicator {
+      display: none;
     }
   }
   .hud-indicator-outer {
+    --bar-length: calc(var(--size) * 6);
     .hud-indicator-inner {
+      width: calc(
+        var(--unit) + ((var(--bar-length) - var(--unit)) * var(--status))
+      );
     }
   }
 }

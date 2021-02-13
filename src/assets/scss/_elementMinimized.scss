@@ -1,10 +1,20 @@
 .hud-element.minimized {
+  width: var(--size);
+  z-index: 2;
+  // background-color: transparent;
   .hud-icon {
     .hud-icon-indicator {
+      height: calc(var(--size) * var(--status));
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      bottom: 0;
     }
   }
   .hud-indicator-outer {
+    opacity: 0;
     .hud-indicator-inner {
+      background-color: var(--background-color);
     }
   }
 }

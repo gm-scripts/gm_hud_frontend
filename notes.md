@@ -10,7 +10,6 @@
 ## Notes
 
 ### message types
-
 ```ts
 type message: {
   type: "ui";
@@ -38,9 +37,9 @@ type message: {
 ```html
 <div class="hud-element">
   <div class="hud-icon">
-    <div class="hud-icon-indicator"></div>      <!-- this indicator is when in expanded state at 100% height, being the background color, if minimized its the indicator-->
+    <div class="hud-icon-indicator"></div>
   </div>
-  <div class="hud-indicator-outer">             <!-- those are only going to be visible in expanded state, they are the progress bar -->
+  <div class="hud-indicator-outer">
     <div class="hud-indicator-inner"></div> 
   </div>
 </div>
@@ -82,5 +81,27 @@ postMessage ({
   type: "ui",
   state: "minimized",
   show: false
+});
+```
+
+### Testing VAL messages ###
+```js
+postMessage({
+  type: "val",
+  food: 1,
+  water: 1,
+  money: 1000000000
+});
+postMessage({
+  type: "val",
+  food: 0.5,
+  water: 0.5,
+  money: 5000
+});
+postMessage({
+  type: "val",
+  food: 0,
+  water: 0.1,
+  money: -1000
 });
 ```
