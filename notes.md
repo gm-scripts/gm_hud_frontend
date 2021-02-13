@@ -10,6 +10,7 @@
 ## Notes
 
 ### message types
+
 ```ts
 type message: {
   type: "ui";
@@ -29,6 +30,7 @@ type message: {
   scale: number;
   opacity: number;      // Float 0-1
   gapScale: number;
+  position: "upper-left" | "upper-right" | "bottom-left";
 }
 ```
 
@@ -40,51 +42,53 @@ type message: {
     <div class="hud-icon-indicator"></div>
   </div>
   <div class="hud-indicator-outer">
-    <div class="hud-indicator-inner"></div> 
+    <div class="hud-indicator-inner"></div>
   </div>
 </div>
 ```
 
 ## Snippets for testing
 
-### Testing UI messages ###
+### Testing UI messages
+
 ```js
 // Messages for all states
-postMessage ({
+postMessage({
   type: "ui",
   state: "hidden",
   show: true
 });
-postMessage ({
+postMessage({
   type: "ui",
   state: "expanded",
   show: true
 });
-postMessage ({
+postMessage({
   type: "ui",
   state: "minimized",
   show: true
 });
 
 // Messages for hiding the UI (show: false)
-postMessage ({
+postMessage({
   type: "ui",
   state: "hidden",
   show: false
 });
-postMessage ({
+postMessage({
   type: "ui",
   state: "expanded",
   show: false
 });
-postMessage ({
+postMessage({
   type: "ui",
   state: "minimized",
   show: false
 });
 ```
 
-### Testing VAL messages ###
+### Testing VAL messages
+
 ```js
 postMessage({
   type: "val",
@@ -103,5 +107,21 @@ postMessage({
   food: 0,
   water: 0.1,
   money: -1000
+});
+```
+
+### Testing CONF messages
+
+```js
+postMessage({
+  type: "conf",
+  colorFood: "orange",
+  colorWater: "blue",
+  colorMoney: "green",
+  colorBg: "gray",
+  scale: 1,
+  opacity: 0.8,
+  gapScale: 1.3,
+  position: "bottom-left"
 });
 ```

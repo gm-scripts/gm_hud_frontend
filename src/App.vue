@@ -1,5 +1,14 @@
 <template>
-  <div id="hud-container" v-if="show">
+  <div
+    id="hud-container"
+    v-if="show"
+    :style="{
+      '--scale': scale,
+      '--gapScale': gapScale,
+      'opacity': opacity
+    }"
+    :class="position"
+  >
     <HudElement
       v-for="e in elements"
       :key="e.key"
@@ -44,9 +53,27 @@ export default {
         }
       },
       state: "minimized",
-          backgroundColor: "#4a4a55",
-      show: true
+      opacity: 1,
+      scale: 1,
+      gapScale: 1,
+      backgroundColor: "#4a4a55",
+      // position: {
+      //   x: 0,
+      //   y: 0,
+      //   leftOrRight: "left",
+      //   topOrBottom: "top"
+      // },
+      show: true,
+      pos: "upper-left"
     };
+  },
+  computed: {
+    position() {
+      let r = [];
+      r.push(this.pos);
+      console.warn(r);
+      return r;
+    }
   },
   mounted() {
     window.addEventListener("message", (event) => {
@@ -64,6 +91,16 @@ export default {
           break;
         }
         case "conf": {
+          this.elements.food.color = item.colorFood;
+          this.elements.water.color = item.colorWater;
+          this.elements.money.color = item.colorMoney;
+
+          this.backgroundColor = item.colorBg;
+          this.opacity = item.opacity;
+          this.scale = item.scale;
+          this.gapScale = item.gapScale;
+
+          this.pos = item.position;
           break;
         }
       }
@@ -73,15 +110,11 @@ export default {
 </script>
 
 <style lang="scss">
-:root {
-  --scale: 1;
-  --gapScale: 1;
-}
 html,
 body {
   // DEV
-  background-image: url("./assets/icons/Screenshot_3.png");
-  background-size: auto 100%;
+  // background-image: url("./assets/icons/Screenshot_3.png");
+  // background-size: auto 100%;
 
   margin: 0;
   padding: 0;
@@ -96,9 +129,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 #hud-container {
+  position: absolute;
+  --scale: 1;
+  --gap-scale: 1;
   $gap: calc(3vh * var(--gapScale));
   display: grid;
   gap: $gap;
   padding: $gap;
+}
+.upper-right {
+  right: 0;
+}
+.bottom-left {
+  bottom: 0;
+  left: 250px;
 }
 </style>

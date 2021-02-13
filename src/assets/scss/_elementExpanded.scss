@@ -1,4 +1,5 @@
 .hud-element.expanded {
+  width: calc(var(--size) * 7);
   background-color: transparent;
   .hud-icon {
     background-color: var(--color);
