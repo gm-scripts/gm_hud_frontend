@@ -13,8 +13,9 @@
       :style="{
         backgroundImage: `url('${icon}')`
       }"
+      :class="danger"
     >
-      <div class="hud-icon-indicator"></div>
+      <div class="hud-icon-indicator" :class="danger"></div>
     </div>
     <div class="hud-indicator-outer">
       <div class="hud-indicator-inner" :class="danger">
@@ -86,7 +87,7 @@ export default {
 
   opacity: 1;
 
-  transition: opacity 0.5s;
+  transition: opacity 0.5s, transform 0.5s;
 
   background-color: var(--background-color);
   border-radius: calc(var(--size) / 2);
@@ -127,6 +128,7 @@ export default {
       transition: width 1s;
       text-align: center;
       color: white;
+      font-size: calc(2vh * var(--scale));
     }
   }
 }

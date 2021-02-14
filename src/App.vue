@@ -33,6 +33,12 @@ export default {
   data() {
     return {
       elements: {
+        money: {
+          key: "money",
+          value: 1000,
+          color: "#11bb42",
+          icon: require("./assets/icons/dollar.svg")
+        },
         food: {
           key: "food",
           value: 0.3,
@@ -44,12 +50,6 @@ export default {
           value: 0.8,
           color: "#6495ed",
           icon: require("./assets/icons/water.svg")
-        },
-        money: {
-          key: "money",
-          value: 1000,
-          color: "#11bb42",
-          icon: require("./assets/icons/dollar.svg")
         }
       },
       state: "minimized",
@@ -71,7 +71,6 @@ export default {
     position() {
       let r = [];
       r.push(this.pos);
-      console.warn(r);
       return r;
     }
   },
@@ -137,11 +136,14 @@ body {
   gap: $gap;
   padding: $gap;
 }
+.upper-left {
+  left: 0;
+}
 .upper-right {
   right: 0;
 }
 .bottom-left {
   bottom: 0;
-  left: 250px;
+  left: 26vw;
 }
 </style>

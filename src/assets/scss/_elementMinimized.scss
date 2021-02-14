@@ -1,8 +1,14 @@
 .hud-element.minimized {
+  transform: translateY(
+    calc(-1 * ((3vh * var(--gapScale)) + (5vh * var(--scale))))
+  );
   width: var(--size);
   z-index: 2;
   // background-color: transparent;
   .hud-icon {
+    &.danger {
+      animation: none;
+    }
     .hud-icon-indicator {
       height: calc(var(--size) * var(--status));
       position: absolute;
