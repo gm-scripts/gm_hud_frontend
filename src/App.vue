@@ -64,7 +64,7 @@ export default {
       //   topOrBottom: "top"
       // },
       show: true,
-      pos: "upper-left"
+      pos: "bottom-left"
     };
   },
   computed: {
@@ -144,6 +144,6 @@ body {
 }
 .bottom-left {
   bottom: 0;
-  left: 26vw;
+  left: 17vw;
 }
 </style>

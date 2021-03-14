@@ -128,7 +128,7 @@ export default {
       transition: width 1s;
       text-align: center;
       color: white;
-      font-size: calc(2vh * var(--scale));
+      font-size: calc(2.4vh * var(--scale));
     }
   }
 }
