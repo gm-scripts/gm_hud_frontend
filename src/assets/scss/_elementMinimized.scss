@@ -1,7 +1,7 @@
 .hud-element.minimized {
   transform: translateY(
-    calc(-1 * ((3vh * var(--gapScale)) + (5vh * var(--scale))))
-  );
+    calc(-1 * (3vh * var(--gapScale)) + (5vh * var(--scale))))
+  ;
   width: var(--size);
   z-index: 2;
   // background-color: transparent;
@@ -22,5 +22,23 @@
     .hud-indicator-inner {
       background-color: var(--background-color);
     }
+  }
+}
+.upper-left {
+  .minimized {
+    position: relative;
+    top: calc(var(--size) * -4);
+  }
+}
+.upper-right {
+  .minimized {
+    position: relative;
+    top: calc(var(--size) * -4);
+  }
+}
+.bottom-left {
+  .minimized {
+  bottom: calc(/*-5vh * var(--scale)*/1 - (3vh * var(--gap-scale)))
+
   }
 }

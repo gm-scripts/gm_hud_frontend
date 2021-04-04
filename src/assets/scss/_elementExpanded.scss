@@ -1,5 +1,5 @@
 .hud-element.expanded {
-  width: calc(var(--size) * 7);
+  width: calc(var(--size) * (var(--bar-scale) + 0.5));
   background-color: transparent;
   .hud-icon {
     background-color: var(--color);
@@ -10,7 +10,7 @@
     }
   }
   .hud-indicator-outer {
-    --bar-length: calc(var(--size) * 6);
+    --bar-length: calc(var(--size) * var(--bar-scale));
     .hud-indicator-inner {
       width: calc(
         var(--unit) + ((var(--bar-length) - var(--unit)) * var(--status))

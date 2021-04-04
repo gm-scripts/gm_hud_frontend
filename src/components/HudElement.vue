@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="active"
     class="hud-element"
     :class="outerElementClasses"
     :style="{
@@ -19,7 +20,11 @@
     </div>
     <div class="hud-indicator-outer">
       <div class="hud-indicator-inner" :class="danger">
-        <span class="hud-money-val" v-if="name === 'money'">{{ value }}</span>
+        <span
+          class="hud-string-val"
+          v-if="name === 'money' || name === 'time' || name === 'job'"
+          >{{ value }}</span
+        >
       </div>
     </div>
   </div>
@@ -30,9 +35,10 @@ export default {
   props: {
     // UI
     state: String,
+    active: Boolean,
 
     // VAL
-    value: Number,
+    value: String,
 
     // CONF
     color: String,
@@ -45,7 +51,12 @@ export default {
   computed: {
     outerElementClasses() {
       let r = [];
-      if (this.name === "money" && this.state !== "expanded") {
+      if (
+        (this.name === "money" ||
+          this.name === "time" ||
+          this.name === "job") &&
+        this.state !== "expanded"
+      ) {
         r.push("hidden");
       } else {
         r.push(this.state);
@@ -53,10 +64,14 @@ export default {
       return r;
     },
     val() {
-      if (this.name === "money") {
+      if (
+        this.name === "money" ||
+        this.name === "time" ||
+        this.name === "job"
+      ) {
         return 1;
       } else {
-        return this.value;
+        return +this.value;
       }
     },
     danger() {
@@ -87,7 +102,7 @@ export default {
 
   opacity: 1;
 
-  transition: opacity 0.5s, transform 0.5s;
+  transition: opacity 0.5s, transform 0.5s, top 0.5s;
 
   background-color: var(--background-color);
   border-radius: calc(var(--size) / 2);
@@ -128,7 +143,14 @@ export default {
       transition: width 1s;
       text-align: center;
       color: white;
-      font-size: calc(2.4vh * var(--scale));
+      font-size: calc(2.3vh * var(--scale));
+      .hud-string-val {
+        position: relative;
+        bottom: calc(var(--size) * -0.03);
+        left: calc(var(--unit) * 0.25);
+        text-overflow: ellipsis;
+        letter-spacing: 0;
+      }
     }
   }
 }
